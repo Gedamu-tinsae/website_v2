@@ -1,0 +1,1226 @@
+.upload-header {
+  margin-bottom: 2rem;
+  text-align: center;
+  font-size: 1.7rem; /* Reduced text size */
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.upload-section-container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.upload-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  background-color: #38325a; 
+  border-radius: 20px;
+  padding: 20px 50px; 
+  margin: 0 auto;
+  z-index: 1;
+}
+
+.upload-btn {
+  position: relative; /* Add position relative for tooltip */
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  border: 1px solid rgb(226, 219, 219);
+  cursor: pointer;
+  transition: background 0.5s;
+  background: rgba(2, 2, 2, 1);
+}
+
+.upload-btn:hover {
+  background: rgba(12, 71, 190, 0.5);
+}
+
+.upload-btn .tooltip {
+  visibility: hidden;
+  width: 120px;
+  background-color: #38325a;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%; /* Position the tooltip below the button */
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.upload-btn .tooltip::after {
+  content: "";
+  position: absolute;
+  top: 100%; /* Arrow at the top of the tooltip */
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.upload-btn:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+.url-icon,
+.file-icon,
+.drive-icon,
+.video-icon,
+.real-time-icon { /* Add real-time-icon class */
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.processing-icon {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  margin-top: 20rem;
+  /* justify-content: center; */
+}
+
+.blank-canvas,
+.image-container img,
+.image-container video { 
+  width: 100%; 
+  height: auto;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  background-color: #1b1924; /* Match the background color */
+}
+
+#originalMedia,
+#annotatedMedia {
+  width: 100%;
+  height: auto;
+}
+
+.result-image {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.result-image img {
+  max-width: 100%;
+  height: auto;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+}
+
+.result-images {
+  display: flex;
+  justify-content: space-around; /* Ensure images are side by side */
+  gap: 2rem;
+  margin-top: 2rem;
+  width: 100%; /* Ensure the container takes full width */
+}
+
+.image-container {
+  flex: 1;
+  text-align: center;
+  max-width: 45%; /* Ensure each image container takes up to 45% of the width */
+}
+
+.processing-page {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.processing-info {
+  color: #ffffff;
+  /* padding: 1rem; */
+  font-size: 1rem;
+}
+
+.processing-info p {
+  margin: 0.5rem 0;
+}
+
+.processing-info a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.processing-info a:hover {
+  text-decoration: underline;
+}
+
+.result-page {
+  text-align: center;
+  margin-top: 2rem;
+  width: 100%; /* Ensure the container takes full width */
+  display: flex;
+  flex-direction: column; /* Ensure elements are stacked vertically */
+  align-items: center;
+  overflow: hidden; /* Prevent overflow */
+  height: 100vh; /* Ensure it takes the full viewport height */
+}
+
+.dropdown-container {
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+  justify-content: center;
+}
+
+.icon-container {
+  margin-right: 0.5rem;
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(56, 50, 90, 1); 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dropdown-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.dropdown-container select {
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: #38325a;
+  color: #ffffff;
+  cursor: pointer;
+  min-width: 120px;
+}
+
+.dropdown-container select:hover {
+  background-color: #4a4275;
+}
+
+.dropdown-container select option {
+  background-color: #38325a;
+  color: white;
+  padding: 8px;
+}
+
+.processing-icon-container {
+  margin:auto;
+  width: 30px;
+  height: 30px;
+  border-radius: 12px;
+  background: rgb(71, 66, 98); 
+  justify-content: center;
+}
+
+.space-between {
+  margin-top: 2rem; /* Adjust the margin as needed */
+}
+
+.more-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: rgba(56, 50, 90, 1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.more-btn:hover {
+  background-color: rgba(12, 71, 190, 0.5);
+}
+
+.more-btn .arrow {
+  margin-left: 0.5rem;
+}
+
+.more-window {
+  position: relative; 
+  margin-top: 1rem;
+  width: 100%;
+  height: 200px; /* Fixed height */
+  background-color: #1b1924; 
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  overflow-y: auto; 
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px; /* Change from right to left */
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.expand-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px; /* Position on the right */
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.expanded {
+  position: fixed; 
+  width: 98vw; 
+  height: 160vw; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  margin: 0;
+  z-index: 1001; 
+  pointer-events: auto; 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); 
+  border-left: 500px solid rgba(80, 67, 156, 0.3); 
+  border-right: 500px solid rgba(80, 67, 156, 0.3); 
+  border-top: 50px solid rgba(80, 67, 156, 0.3); 
+  border-bottom: 50px solid rgba(80, 67, 156, 0.3); 
+  backdrop-filter: blur(50px); 
+}
+
+.play-btn {
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #ffffff;
+  background-color: rgba(56, 50, 90, 1);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.play-btn:hover {
+  background-color: rgba(12, 71, 190, 0.5);
+}
+
+.intermediate-images img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 1rem;
+}
+
+.home-page {
+  overflow-y: auto;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20rem;
+  /* justify-content: center; */
+  align-items: center;
+  height: 100%;
+}
+
+.four-img-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  overflow-y: auto; 
+  max-height: calc(100vh - 150px); 
+  /* padding-top: 0;  */
+  box-sizing: border-box;
+   
+}
+
+body, html {
+  overflow: hidden; 
+  margin: 0; 
+  padding: 0; 
+  height: 100%;
+}
+
+.intermediate-images .detected-plate {
+  margin: 1rem 0;
+  padding: 1rem;
+  background: rgba(56, 50, 90, 0.3);
+  border-radius: 10px;
+}
+
+.intermediate-images .detected-plate p {
+  color: white;
+  margin: 0.5rem 0;
+}
+
+.intermediate-images .detected-plate img {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+.intermediate-images .plate-text {
+  font-size: 1.1rem;
+  color: #1e90ff;
+  margin-top: 0.5rem;
+}
+
+.detected-plates-list {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.detected-plates-list li {
+  background: rgba(56, 50, 90, 0.3);
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  color: white;
+}
+
+.processing-info table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background: rgba(56, 50, 90, 0.3);
+}
+
+.processing-info th,
+.processing-info td {
+  padding: 0.5rem;
+  text-align: left;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.processing-info th {
+  background: rgba(56, 50, 90, 0.5);
+}
+
+.text-candidates {
+  margin-top: 15px;
+  border: 1px solid #444;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.candidates-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  color: #fff;
+  font-size: 0.9em;
+}
+
+.candidates-table th,
+.candidates-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #555;
+}
+
+.candidates-table th {
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #aaa;
+}
+
+.best-candidate {
+  background-color: rgba(0, 128, 0, 0.2);
+  font-weight: bold;
+}
+
+.original-candidate {
+  background-color: rgba(255, 165, 0, 0.2);
+  font-style: italic;
+}
+
+.candidates-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.char-confidence-section {
+  margin-top: 20px;
+  border: 1px solid #555;
+  padding: 15px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.char-confidence-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.char-box {
+  width: 40px;
+  height: 60px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+.char-box::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0, 128, 0, 0.3);
+  z-index: 0;
+  transition: height 0.3s ease;
+}
+
+.char-box.high-confidence::before {
+  height: 70%;
+  background-color: rgba(0, 128, 0, 0.3);
+}
+
+.char-box.medium-confidence::before {
+  height: 40%;
+  background-color: rgba(255, 165, 0, 0.3);
+}
+
+.char-box.low-confidence::before {
+  height: 20%;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.char {
+  font-size: 24px;
+  font-weight: bold;
+  padding-top: 5px;
+  position: relative;
+  z-index: 1;
+}
+
+.char-conf {
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 2px 0;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.high-confidence .char-conf {
+  color: #6f6;
+}
+
+.medium-confidence .char-conf {
+  color: #ff6;
+}
+
+.low-confidence .char-conf {
+  color: #f66;
+}
+
+.candidates-table th:nth-child(4), 
+.candidates-table td:nth-child(4) {
+  text-align: center;
+}
+
+.candidates-table td:nth-child(4) {
+  color: #6f6;
+}
+
+.candidates-table td:nth-child(4):contains('✗') {
+  color: #f66;
+}
+
+/* Enhanced hover state for text candidates */
+.candidates-table tr:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+.char-positions-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+}
+
+.char-position {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 40px;
+  margin-bottom: 15px;
+}
+
+.char-alternatives {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 5px;
+  width: 100%;
+}
+
+.alt-char-box {
+  width: 30px;
+  height: 40px;
+  border: 1px solid #555;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+  opacity: 0.8;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.alt-char-box:hover {
+  opacity: 1;
+  transform: scale(1.05);
+  z-index: 10;
+}
+
+.alt-char-box::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  z-index: 0;
+  transition: height 0.3s ease;
+}
+
+.alt-char-box.high-confidence::before {
+  height: 70%;
+  background-color: rgba(0, 128, 0, 0.3);
+}
+
+.alt-char-box.medium-confidence::before {
+  height: 40%;
+  background-color: rgba(255, 165, 0, 0.3);
+}
+
+.alt-char-box.low-confidence::before {
+  height: 20%;
+  background-color: rgba(255, 0, 0, 0.3);
+}
+
+.alt-char {
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.alt-char-conf {
+  font-size: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  text-align: center;
+  padding: 1px 0;
+  position: relative;
+  z-index: 1;
+}
+
+.high-confidence .alt-char-conf {
+  color: #6f6;
+}
+
+.medium-confidence .alt-char-conf {
+  color: #ff6;
+}
+
+.low-confidence .alt-char-conf {
+  color: #f66;
+}
+
+.options-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  background-color: rgba(56, 50, 90, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkbox-container input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #38325a;
+}
+
+.checkbox-container label {
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.dehaze-stages {
+  margin: 1rem 0;
+  padding: 1rem;
+  border-radius: 10px;
+  background: rgba(56, 50, 90, 0.3);
+}
+
+.dehaze-stages h3 {
+  color: #1e90ff;
+  margin-bottom: 1rem;
+}
+
+.dehaze-stages p {
+  color: white;
+  margin: 0.5rem 0;
+}
+
+.dehaze-stages img {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+/* Add labels to the dehaze stages */
+.dehaze-stages p strong {
+  display: inline-block;
+  background-color: rgba(30, 144, 255, 0.2);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Add these styles to the existing CSS file */
+
+.detected-vehicle-region {
+  margin: 15px 0;
+  padding: 10px;
+  border: 1px solid #444;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.vehicle-color-caption {
+  font-weight: 500;
+  color: #ffd700;
+  margin-top: 5px;
+}
+
+.vehicle-color-info {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-left: 3px solid #00ffff;
+}
+
+/* Style for the color swatch in the vehicle color analysis */
+.color-swatch {
+  width: 20px;
+  height: 20px;
+  border-radius: 3px;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.color-bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.color-label {
+  width: 100px;
+  font-size: 14px;
+}
+
+.color-bar-container {
+  flex-grow: 1;
+  background-color: rgba(255, 255, 255, 0.1);
+  height: 10px;
+  margin: 0 10px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.color-bar-fill {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.color-percentage {
+  font-size: 12px;
+  min-width: 50px;
+  text-align: right;
+}
+
+/* Add these styles for the vehicle region section */
+.missing-region {
+  padding: 15px;
+  margin: 10px 0;
+  background-color: rgba(255, 165, 0, 0.2);
+  border-left: 3px solid #ff9000;
+  color: #fff;
+  font-style: italic;
+}
+
+.error-message {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-left: 3px solid #ff3333;
+  color: #fff;
+  font-style: italic;
+}
+
+.vehicle-color-caption {
+  margin-top: 8px;
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-left: 3px solid #00ffff;
+  color: #fff;
+  font-weight: 500;
+}
+
+.detected-vehicle-region {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
+.detected-vehicle-region img {
+  max-width: 100%;
+  border: 1px solid rgba(0, 255, 255, 0.5);
+  margin-bottom: 10px;
+}
+
+.debug-info {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-left: 3px solid #00bfff;
+  font-size: 0.9rem;
+  text-align: left;
+}
+
+.debug-info p {
+  margin: 0 0 5px 0;
+  font-weight: bold;
+}
+
+.debug-info ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.debug-info li {
+  margin: 3px 0;
+}
+
+.vehicle-type-info {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-left: 3px solid #ffa500;
+}
+
+.vehicle-alternatives {
+  margin-top: 10px;
+  padding: 5px;
+  background-color: rgba(255, 165, 0, 0.05);
+}
+
+.vehicle-alternative-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 10px;
+  margin: 2px 0;
+}
+
+.vehicle-type-region {
+  margin: 20px 0;
+  padding: 15px;
+  background-color: rgba(255, 165, 0, 0.1);
+  border: 1px solid #ffa500;
+  border-radius: 5px;
+}
+
+.vehicle-type-region img {
+  max-width: 100%;
+  border: 1px solid rgba(255, 165, 0, 0.5);
+  margin-bottom: 10px;
+}
+
+.type-detection-caption {
+  font-weight: 500;
+  color: #ffa500;
+  margin-top: 8px;
+  margin-bottom: 15px;
+  padding: 8px;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-left: 3px solid #ffa500;
+}
+
+.full-image-ocr-notice {
+  margin: 10px 0;
+  padding: 10px;
+  border-left: 3px solid #ffd700;
+  background-color: rgba(255, 215, 0, 0.1);
+}
+
+.full-image-ocr-notice .warning-text {
+  color: #ffd700;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.full-image-ocr-notice .original-text {
+  color: #aaa;
+  font-style: italic;
+}
+
+.vehicle-orientation-info {
+  margin-bottom: 10px;
+  padding: 5px;
+  background-color: rgba(100, 149, 237, 0.1);
+  border-left: 3px solid #6495ED;
+}
+
+.orientation-confidence {
+  margin-left: 5px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+/* Update vehicle type info styling */
+.vehicle-type-info {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: rgba(255, 165, 0, 0.1);
+  border-left: 3px solid #ffa500;
+  border-radius: 4px;
+}
+
+.vehicle-type-info h4 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #ffa500;
+  font-size: 1.1rem;
+}
+
+.best-detection {
+  font-size: 1.05rem;
+  padding: 8px;
+  background-color: rgba(0, 128, 0, 0.1);
+  border-left: 3px solid #00a000;
+  margin-bottom: 8px;
+}
+
+.full-image-detection, 
+.region-detection {
+  padding: 6px 8px;
+  background-color: rgba(255, 255, 255, 0.05);
+  margin-bottom: 5px;
+}
+
+.full-image-detection {
+  border-left: 3px solid #54a0ff;
+}
+
+.region-detection {
+  border-left: 3px solid #ff9f43;
+}
+
+.type-confidence {
+  margin-left: 5px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+.vehicle-alternatives {
+  margin-top: 10px;
+  padding: 8px;
+  background-color: rgba(255, 165, 0, 0.05);
+}
+
+.vehicle-alternatives p {
+  margin-top: 0;
+  margin-bottom: 5px;
+}
+
+.vehicle-alternative-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 10px;
+  margin: 2px 0;
+}
+
+/* Vehicle Type Detection Section */
+.vehicle-type-detection-section {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: rgba(255, 165, 0, 0.05);
+  border-radius: 5px;
+  border: 1px solid rgba(255, 165, 0, 0.3);
+}
+
+.full-image-type-section,
+.region-type-section {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.type-detection-image {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.missing-image {
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #aaa;
+  text-align: center;
+  font-style: italic;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+.source-indicator {
+  margin-left: 8px;
+  padding: 2px 6px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+  font-size: 0.85em;
+  color: #ccc;
+}
+
+.best-detection-section {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: rgba(0, 128, 0, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid rgba(0, 128, 0, 0.5);
+}
+
+/* Improve existing styles */
+.full-image-detection, 
+.region-detection {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.full-image-detection {
+  border-left: 3px solid #54a0ff;
+}
+
+.region-detection {
+  border-left: 3px solid #ff9f43;
+}
+
+.best-detection {
+  padding: 10px;
+  background-color: rgba(0, 128, 0, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid rgba(0, 128, 0, 0.5);
+  font-weight: 500;
+}
+
+/* Vehicle Color Detection Section */
+.vehicle-color-detection-section {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 5px;
+  border: 1px solid rgba(0, 255, 255, 0.3);
+}
+
+.full-image-color-section,
+.region-color-section {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.color-detection-image {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.full-image-color-info, 
+.region-color-info {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+.full-image-color-info {
+  border-left: 3px solid #00ccff;
+}
+
+.region-color-info {
+  border-left: 3px solid #00ffcc;
+}
+
+.color-confidence {
+  margin-left: 5px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+.best-color-section {
+  margin-top: 15px;
+  padding: 8px 12px;
+  background-color: rgba(0, 255, 255, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid rgba(0, 255, 255, 0.5);
+}
+
+.best-color {
+  padding: 10px;
+  background-color: rgba(0, 255, 255, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid rgba(0, 255, 255, 0.5);
+  font-weight: 500;
+}
+
+/* Mini color analysis for smaller sections */
+.color-analysis.mini h5 {
+  font-size: 0.9rem;
+  margin: 10px 0 5px 0;
+  color: #aaa;
+}
+
+.color-analysis.mini .color-bar-row {
+  margin-bottom: 3px;
+}
+
+.color-analysis.mini .color-swatch {
+  width: 14px;
+  height: 14px;
+}
+
+.color-analysis.mini .color-label {
+  width: 70px;
+  font-size: 0.85rem;
+}
+
+.color-analysis.mini .color-bar-container {
+  height: 8px;
+}
+
+.color-analysis.mini .color-percentage {
+  font-size: 0.8rem;
+  min-width: 40px;
+}
+
+/* Vehicle Make Info styling */
+.vehicle-make-info {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: rgba(102, 255, 153, 0.1);
+  border-left: 3px solid #66ff99;
+  border-radius: 4px;
+}
+
+.make-confidence {
+  margin-left: 5px;
+  color: #888;
+  font-size: 0.9em;
+}
+
+/* Vehicle Make Detection Section */
+.vehicle-make-detection-section {
+  margin: 15px 0;
+  padding: 12px;
+  background-color: rgba(102, 255, 153, 0.05);
+  border-radius: 5px;
+  border: 1px solid rgba(102, 255, 153, 0.3);
+}
+
+.full-image-make-section,
+.region-make-section {
+  margin-bottom: 15px;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.make-detection-image {
+  max-width: 100%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  margin: 8px 0;
+}
+
+.vehicle-make-detection-section .full-image-detection {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid #66ff99;
+}
+
+.vehicle-make-detection-section .region-detection {
+  padding: 8px 12px;
+  margin: 5px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  border-left: 3px solid #33cc66;
+}
+
+.vehicle-make-detection-section .best-detection {
+  padding: 10px;
+  background-color: rgba(102, 255, 153, 0.1);
+  border-radius: 4px;
+  border-left: 3px solid rgba(102, 255, 153, 0.5);
+  font-weight: 500;
+}
+
+
+
+

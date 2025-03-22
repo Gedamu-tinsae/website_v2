@@ -1,0 +1,29 @@
+# Python virtual environment
+venv/
+env/
+
+# Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+app/__pycache__/
+app/*/__pycache__/
+app/*.pyc
+app/*/*.pyc
+
+# Environment variables
+.env
+
+# Uploaded files
+uploads/
+results/
+
+# IDE specific
+.vscode/
+.idea/
+*.swp
+*.swo
+
+#models
+# VOI/

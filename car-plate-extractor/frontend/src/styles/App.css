@@ -1,0 +1,46 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.App {
+  background: linear-gradient(100deg, #38325a 0%, #38325a 1%, #070513 48%);
+  min-height: 100vh;
+  color: white;
+  margin: 0px auto;
+  border-radius: 50px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.main-content {
+  width: 100%;
+  margin: 0 auto; 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  /* min-height: calc(100vh - 0rem);  */
+  position: ab; /* Change to relative positioning */
+  overflow:scroll;
+
+  
+}
+
+.navbar {
+  background: rgba(255, 255, 255, 0.05);
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure it stays above other elements */
+}
+
+.logo {
+  color: white;
+}
+
+.nav-links a {
+  color: white;
+}
