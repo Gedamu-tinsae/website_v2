@@ -2,7 +2,6 @@
 
 A comprehensive full-stack application for extracting license plates and analyzing vehicle characteristics from images and videos. The system combines computer vision, deep learning, and advanced image processing techniques to provide detailed vehicle analysis beyond just license plate recognition.
 
-![Car Plate Extractor Preview](https://via.placeholder.com/800x400?text=Car+Plate+Extractor+Preview)
 
 ## Features
 
@@ -70,7 +69,7 @@ The application consists of two main components:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/car-plate-extractor.git
+   git clone hhttps://github.com/Gedamu-tinsae/website_v2.git
    cd car-plate-extractor/backend
    ```
 
