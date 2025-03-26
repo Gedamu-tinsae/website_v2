@@ -745,7 +745,7 @@ def process_video(file_path, confidence_threshold=0.7):
                 cropped_image = gray[x1:x2+1, y1:y2+1]
                 
                 # Use our centralized function to extract text
-                license_plate, _ = extract_text_from_plate(cropped_image, preprocessing_level='minimal')
+                license_plate, text_candidates, original_ocr_text = extract_text_from_plate(cropped_image, preprocessing_level='minimal')
                 
                 font = cv2.FONT_HERSHEY_SIMPLEX
                 annotated_frame = cv2.putText(frame, text=license_plate, org=(location[0][0][0], location[1][0][1]+60), fontFace=font, fontScale=1, color=(0,255,0), thickness=2, lineType=cv2.LINE_AA)

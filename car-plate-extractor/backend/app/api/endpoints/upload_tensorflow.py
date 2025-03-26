@@ -88,8 +88,19 @@ async def upload_video_tensorflow(file: UploadFile = File(...), low_visibility: 
         # Pass a lower confidence threshold for low visibility
         confidence_threshold = 0.6 if low_visibility else 0.7
         result = process_video_with_model(file_path, low_visibility=low_visibility, confidence_threshold=confidence_threshold)
-
+        
+        # Check if result is a dict before returning
+        if not isinstance(result, dict):
+            logger.error("Video processing did not return a dictionary result")
+            return JSONResponse(content={"status": "error", "message": "Invalid result format from processing"}, status_code=500)
+        
+        if result.get("status") == "error":
+            logger.error(f"Error in video processing: {result.get('message')}")
+            return JSONResponse(content=result, status_code=500)
+            
         return JSONResponse(content=result)
     except Exception as e:
         logger.error(f"Error uploading video: {e}")
+        import traceback
+        traceback.print_exc()
         return JSONResponse(content={"status": "error", "message": str(e)}, status_code=500)

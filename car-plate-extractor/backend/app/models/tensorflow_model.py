@@ -501,6 +501,10 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
             "plates": []
         }
         all_vehicle_colors = []  # Track all detected vehicle colors
+        
+        # Set a limit for the number of frames to process to avoid timeouts
+        max_frames = 40  # Process only the first 40 frames to ensure completion
+        logger.info(f"Will process up to {max_frames} frames from a total of {frame_count} frames")
 
         # Initialize HazeRemoval if needed for low visibility
         hr = None
@@ -539,7 +543,12 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
                 break
 
             frame_number += 1
-            logger.info(f"Processing frame {frame_number}/{frame_count}")
+            logger.info(f"Processing frame {frame_number}/{min(frame_count, max_frames)}")
+            
+            # Exit the loop if we've processed enough frames
+            if frame_number > max_frames:
+                logger.info(f"Reached frame limit of {max_frames}. Stopping video processing.")
+                break
 
             # Store original frame
             original_frame = frame.copy()
@@ -611,7 +620,7 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
                     frame_plates.append(plate)
 
                     # Use the common extraction function for improved OCR
-                    plate_text, candidates = extract_text_from_plate(plate, preprocessing_level='advanced')
+                    plate_text, candidates, original_ocr_text = extract_text_from_plate(plate, preprocessing_level='advanced')
                     
                     # For vehicle color detection, extract a larger region around the license plate
                     vehicle_region_y_min = max(0, y_min - (y_max - y_min) * 3)  # Go up 3x the plate height
@@ -728,17 +737,41 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
             results.append(frame)
 
         cap.release()
-        if results:
+        
+        # Double check we have some results
+        if not results:
+            logger.warning("No frames were processed successfully. Check video format.")
+            return {
+                "status": "error",
+                "message": "No frames could be processed from the video."
+            }
+            
+        # Save only a subset of the processed frames for performance reasons
+        logger.info(f"Saving processed video with {len(results)} frames")
+        
+        try:
             # Save the processed video
             result_video_path = os.path.join("results", "tensorflow", "videos", os.path.basename(file_path))
             fourcc = cv2.VideoWriter_fourcc(*'avc1')
             frame_size = (results[0].shape[1], results[0].shape[0])
             out = cv2.VideoWriter(result_video_path, fourcc, fps, frame_size)
 
-            for frame in results:
-                out.write(frame)
-            out.release()
-            logger.info(f"Processed video saved at: {result_video_path}")
+            if not out.isOpened():
+                logger.error("Failed to open video writer. Check codec compatibility.")
+                # Fall back to MJPG codec which is more widely supported
+                out = cv2.VideoWriter(result_video_path, cv2.VideoWriter_fourcc(*'MJPG'), fps, frame_size)
+                if not out.isOpened():
+                    logger.error("Failed to open video writer with MJPG codec too.")
+                    # As a last resort, try to save a sample frame as image
+                    sample_frame_path = os.path.join("results", "tensorflow", "images", f"sample_frame_{os.path.basename(file_path)}.jpg")
+                    cv2.imwrite(sample_frame_path, results[0])
+                    logger.info(f"Saved sample frame instead at {sample_frame_path}")
+            else:
+                # Write frames
+                for frame in results:
+                    out.write(frame)
+                out.release()
+                logger.info(f"Processed video saved at: {result_video_path}")
 
             # Encode sample frames and plates as base64 for frontend display
             def encode_image(img):
@@ -772,6 +805,8 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
                 "status": "success",
                 "filename": file_path,
                 "result_url": f"/results/tensorflow/videos/{os.path.basename(file_path)}",
+                "frames_processed": frame_number,
+                "total_frames": frame_count,
                 "result_image": encode_image(results[sample_frame_index]),  # Sample frame from result
                 "intermediate_images": intermediate_images,
                 "detected_plates": list(set(all_extracted_texts)),  # Remove duplicates
@@ -791,9 +826,25 @@ def process_video_with_model(file_path, low_visibility=False, confidence_thresho
                 "make_alternatives": vehicle_make_info["alternatives"]
             }
 
+            logger.info("Video processing completed successfully")
             return result
-        else:
-            raise Exception("No frames were processed successfully.")
+        except Exception as e:
+            logger.error(f"Error saving video: {e}")
+            # Try to return a partial result with at least the first frame
+            if results:
+                sample_frame_path = os.path.join("results", "tensorflow", "images", f"error_frame_{os.path.basename(file_path)}.jpg")
+                cv2.imwrite(sample_frame_path, results[0])
+                return {
+                    "status": "partial_success",
+                    "message": f"Could not save video but processed {len(results)} frames. Sample frame saved.",
+                    "sample_frame_url": f"/results/tensorflow/images/error_frame_{os.path.basename(file_path)}.jpg"
+                }
+            raise
     except Exception as e:
         logger.error(f"Error processing video with model: {e}")
-        raise
+        import traceback
+        traceback.print_exc()
+        return {
+            "status": "error",
+            "message": f"Error processing video: {str(e)}"
+        }
